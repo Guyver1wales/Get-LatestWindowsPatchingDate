@@ -24,3 +24,7 @@ It will then output the date sorted list to a csv to a folder on your chosing us
 I have also included a second filtering option so you can filter a separate csv for a specific time range (default is 90 days) so you can get a separate list of servers that have not been patched for x days if you so desire such a thing for a compliance/maanger report.
   
 Using Get-Hotfix -ComputerName and then falling back to Invoke-Command gave me a 100% return rate across 270 domain servers with 100% accurate latest patching date.
+
+# Output .csv after it had been ingested into my automation website
+
+![output](https://i.imgur.com/i8jkqRF.png)
