@@ -10,7 +10,7 @@ While attempting to write an automation report for my team lead in work for this
 ### Note
 Things I have noted while writing this script:
 
-Get-Hotfix -ComputerName <remote server name> will return 'InstalledOn' dates for ALL patches when Get-Hotfix is run locally on the same machine and does not return dates for all patches.
+Get-Hotfix -ComputerName <remote server name> will return 'InstalledOn' dates for ALL patches, even though Get-Hotfix run locally on the same machine does not return dates for all patches.
   
 # Execution
 I have provided two version, on for serial execution using PowerShell v5 and one for Parallel execution using PowerShell v7
