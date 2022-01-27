@@ -15,7 +15,7 @@ Things I have noted while writing this script:
 Get-Hotfix -ComputerName <remote server name> will return 'InstalledOn' dates for ALL patches, even though Get-Hotfix run locally on the same machine does not return dates for all patches.
   
 # Execution
-I have provided two version, on for serial execution using PowerShell v5 and one for Parallel execution using PowerShell v7
+I have provided two version, one for serial execution using PowerShell v5 and one for Parallel execution using PowerShell v7
 
 The script gets all your domain server based on the $servers variable query (feel free to modify this to your needs/environment).
 The script then attempts to connect to each server remotely using **Get-Hotfix -ComputerName <remote server name>** and sort the results by InstalledOn and return only the latest patch date.
