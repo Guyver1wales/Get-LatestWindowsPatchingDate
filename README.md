@@ -1,6 +1,8 @@
 # Get-LatestWindowsPatchingDate
 Get the date of the most recently installed windows Update patch for all domain servers
 
+### Context
+
 This script attempts, very simply, to overcome the most common frustrations of using Get-Hotfix or Get-WMIObject -Class Win32_quickfixengineering which is the lack of dates supplied by the 'InstalledOn' object property.
 
 While attempting to write an automation report for my team lead in work for this very 'simple' thing I kept hitting two road blocks:
