@@ -5,7 +5,7 @@ This script attempts, very simply, to overcome the most common frustrations of u
 
 While attempting to write an automation report for my team lead in work for this very 'simple' thing I kept hitting two road blocks:
 1. no dates in a lot of returned hotfixes meaning that when sorting by InstalledOn, my report would end up reporting the most recent patch that had a date in this property, unfortuately this was often months or even sometimes years out of date leading to innaccurate reporting.
-2.  when using Get-Hotfix -ComputerName <remote server name>, the command fails with get-hotfix : No such interface supported, even though remote powershell works to these remote servers and you normally experience no issues getting information via remote powershell from these servers.
+2.  When using Get-Hotfix -ComputerName <remote server name>, the command fails with **get-hotfix : No such interface supported**, even though remote powershell works to these remote servers and you normally experience no issues getting information via remote powershell from these servers.
 
 ### Note
 Things I have noted while writing this script:
