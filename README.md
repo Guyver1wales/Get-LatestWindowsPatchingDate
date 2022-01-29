@@ -1,7 +1,7 @@
 # Get-LatestWindowsPatchingDate v1.2
 Get the dates of 3 separate patching mechanisms to determine the 'updatedness' of a single or multiple windows machines where enterprise tools such as WSUS, SCCM and other 3rd party tools are unavailable.
 
-**Script converted to a function for v1.2 to allow single machine query and to remove output files and allow script user to determine theior own output**
+**Script converted to a function for v1.2 to allow single machine query and to remove output files and allow script user to determine their own output**
 
 # Who is This Script For? 
 1. System admins, server engineers who have no access to entrerprise patching reporting tools/applications. 
