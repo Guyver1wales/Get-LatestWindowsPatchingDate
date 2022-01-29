@@ -30,7 +30,7 @@ You can modify this second file to suit your needs of what you want to define as
 # Notes and Observations 
 Windows Server DOES NOT log Defender definition updates to Setup Event Log nor to Get-Hotfix. 
   
-Defender updates are ALWAYS KB2267602 and then prefixed with a version number. 
+Defender updates are ALWAYS KB2267602 and then suffixed with a version number. 
   
 My investigation while writing this script found no instances of this KB in either Get-Hotix nor the Setup event log. 
 
