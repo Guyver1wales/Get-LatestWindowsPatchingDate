@@ -27,7 +27,7 @@ function Get-LatestWindowsPatchingDate {
 			console output to host
 
 		.NOTES
-			Version:		1.1
+			Version:		1.2
 		Author:			Leon Evans
 		Creation Date: 	29/01/2022
 		Location:		https://github.com/Guyver1wales/Get-LatestWindowsPatchingDate
