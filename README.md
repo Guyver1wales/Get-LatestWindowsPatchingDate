@@ -1,5 +1,7 @@
-# Get-LatestWindowsPatchingDate v1.1 
-Get the dates of 3 separate patching mechanisms to determine the 'updatedness' of all Domain Server where enterprise tools such as WSUS, SCCM and other 3rd party tools are unavailable. 
+# Get-LatestWindowsPatchingDate v1.2
+Get the dates of 3 separate patching mechanisms to determine the 'updatedness' of a single or multiple windows machines where enterprise tools such as WSUS, SCCM and other 3rd party tools are unavailable.
+
+**Script converted to a function for v1.2 to allow single machine query and to remove output files and allow script user to determine theior own output**
 
 # Who is This Script For? 
 1. System admins, server engineers who have no access to entrerprise patching reporting tools/applications. 
@@ -19,13 +21,17 @@ To that end, Get-Hotfix attempts to run remotely against all servers first, and 
 # Execution 
 Download the scripts and store them locally in a folder of your choice. 
 
-Execute the script using .\Get-Latest-WindowsPatchingDate (use ps7 for faster parallel processing, adjust your throttlelimit based on the RAM available on the machine you're running it from) 
+dot source the function to load it:
 
-A sub folder called REPORTS will be created. 
-
-The script outputs two csv files, one for all servers and one for servers where the system file date is older than 90 days. 
-
-You can modify this second file to suit your needs of what you want to define as 'out of date' servers. 
+**. .\Get-LatestWindowsPatchingDate.ps1**
+  
+Run the script against the localhost:
+  
+**Get-Get-LatestWindowsPatchingDate**
+  
+Run the script against a remote machine:
+  
+**Get-LatestWindowsPatchingDate -ComputerName <remote hostname>**
 
 # Notes and Observations 
 Windows Server DOES NOT log Defender definition updates to Setup Event Log nor to Get-Hotfix. 
@@ -41,6 +47,8 @@ This script is meant for small teams who patch manually without the aid of enter
 u/TumsFestivalEveryDay for the Get-WinEvent code snippet which I modified to suit. 
 
 u/BigHandLittleSlap for pointing out the flaw in my original scripts 'logic' and the system files code which I modified to suit. 
+  
+u/Semicol0n for teh recommendation to allow single computer query and allow user to determine output which allowed me to convert it to a function.
 
 
 # Output Example 
