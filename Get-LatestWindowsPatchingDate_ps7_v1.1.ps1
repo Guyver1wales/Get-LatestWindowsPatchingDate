@@ -102,7 +102,7 @@ $servers = (Get-ADComputer -Properties Description -Filter 'Enabled -eq $true -a
 # Adjust your throttle limit to suit your CPU/RAM spec on the execution server #
 $results = $servers | ForEach-Object -ThrottleLimit 20 -Parallel {
 	$serverName = "$_"
-	$operatingSystem = (Get-CimInstance -ClassName CIM_OperatingSystem ).Caption
+	$operatingSystem = (Get-CimInstance -ComputerName $serverName -ClassName CIM_OperatingSystem ).Caption
 
 	### GET MOST RECENT HOTFIX DATE ###
 	$hotfixResult = try {
