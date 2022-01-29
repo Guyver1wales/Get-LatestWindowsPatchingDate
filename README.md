@@ -35,3 +35,6 @@ You can modify this second folder to suite your needs of what you want to define
 u/TumsFestivalEveryDay for the Get-WinEvent code snippet which I modified to suit.
 
 u/BigHandLittleSlap for pointing out the flaw in my original scripts 'logic' and the system files code which I modified to suit.
+
+# Output Example
+![patches](https://i.imgur.com/CMWyWDI.png)
