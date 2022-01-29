@@ -26,10 +26,13 @@ The script outputs two csv files, one for all servers and one for servers where 
 You can modify this second folder to suite your needs of what you want to define as 'out of date' servers.
 
 # Notes and Observations
-1. Windows Server DOES NOT log Defender defintion updates to Setup Event Log nor to Get-Hotfix
+Windows Server DOES NOT log Defender defintion updates to Setup Event Log nor to Get-Hotfix.
+
   Defender updates are ALWAYS KB2267602 and then prefixed with a version number.
-  my investigation while writing this script found no instances of this KB in either Get-Hotix nor the Setup event log.
-2. This script is meant for small teams who patch manually without the aid of enterprise tools so it therefore stands to reason that applications such as SQL, Exchange etc would also be patched alongside windows patching, therefore the dates provided by this script would allow a small team, who patch manually a suitable 'viewport' into their overall patching status.
+  
+  My investigation while writing this script found no instances of this KB in either Get-Hotix nor the Setup event log.
+
+  This script is meant for small teams who patch manually without the aid of enterprise tools so it therefore stands to reason that applications such as SQL, Exchange etc would also be patched alongside windows patching, therefore the dates provided by this script would allow a small team, who patch manually a suitable 'viewport' into their overall patching status.
   
 # Thanks to the following on Reddit
 u/TumsFestivalEveryDay for the Get-WinEvent code snippet which I modified to suit.
