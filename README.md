@@ -3,7 +3,7 @@ Get the dates of 3 separate patching mechanisms to determine the 'updatedness' o
 
 # Who is This Script For?
 1. System admins, server engineers who have no access to entrerprise patching reporting tools/applicaitons.
-2. System Admins, server engineers who have a joing a new company with no patchings tools who need a quick solution to get an overview of windows server patching levels/dates to determine how out of date their new environment is.
+2. System Admins, server engineers who have a joined a new company with no patching tools who need a quick solution to get an overview of windows server patching levels/dates to determine how out of date their new environment is.
 3. Small local managed service provider engineers who's customers dont have access to patch management tools who need a quick solution to get an overview of windows server patching levels/dates to determine how out of date their customer is.
 
 # What does this Script Check?
@@ -23,7 +23,7 @@ Exectue the script using .\Get-Latest-WindowsPatchingDate (use ps7 for faster pa
 A sub folder called REPORTS will be created.
 
 The script outputs two csv files, one for all servers and one for servers where the system file date is older than 90 days.
-You can modify this second folder to suite your needs of what you want to define as 'out of date' servers.
+You can modify this second file to suite your needs of what you want to define as 'out of date' servers.
 
 # Notes and Observations
 Windows Server DOES NOT log Defender defintion updates to Setup Event Log nor to Get-Hotfix.
