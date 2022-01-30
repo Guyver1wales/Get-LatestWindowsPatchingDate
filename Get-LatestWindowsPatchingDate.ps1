@@ -1,5 +1,4 @@
-function Get-LatestWindowsPatchingDate {
-	<#
+<#
 		 .SYNOPSIS
 			Get-LatestWindowsPatchingDate
 
@@ -27,11 +26,15 @@ function Get-LatestWindowsPatchingDate {
 			console output to host
 
 		.NOTES
-			Version:		1.2
+			Version:		1.3
 		Author:			Leon Evans
 		Creation Date: 	29/01/2022
 		Location:		https://github.com/Guyver1wales/Get-LatestWindowsPatchingDate
 		Change Log:
+		v1.3
+			moved comment block out of function code
+			added check for localhost or remote machine and have different code execute for each instance
+			as Ciminstance and Get-Files were failing locally on win 11.
 		v1.2
 			Converted script to a function
 			Removed output files
@@ -41,8 +44,7 @@ function Get-LatestWindowsPatchingDate {
 		v1.0
 			Original Version
 	#>
-
-
+function Get-LatestWindowsPatchingDate {
 	[OutputType([array])]
 	Param
 	(
@@ -56,13 +58,22 @@ function Get-LatestWindowsPatchingDate {
 	)
 
 	Begin {
-		# NULL VARIABLES #
-		$servers = $null
-		$results = $null
-		$3months = $null
+		### DETERMINE IF COMPUTER BEING PROCESSED IS THE LOCALHOST OR A REMOTE COMPUTER ###
+		if ($ComputerName -eq $env:COMPUTERNAME) {
+			$localhost = $true
+		}
+		else {
+			$localhost = $false
+		}
 	}
 	Process {
-		$operatingSystem = (Get-CimInstance -ComputerName $ComputerName -ClassName CIM_OperatingSystem ).Caption
+		### GET OPERATING SYSTEM ###
+		if ($localhost -eq $true) {
+			$operatingSystem = (Get-CimInstance -ClassName CIM_OperatingSystem ).Caption
+		}
+		else {
+			$operatingSystem = (Get-CimInstance -ComputerName $ComputerName -ClassName CIM_OperatingSystem ).Caption
+		}
 
 		### GET MOST RECENT HOTFIX DATE ###
 		$hotfixResult = try {
@@ -91,17 +102,31 @@ function Get-LatestWindowsPatchingDate {
 		}
 
 		### GET MOST RECENT DATE OF CRITICAL SYSTEM FILES ###
-		$systemFilesDate = Invoke-Command -ComputerName $ComputerName -ScriptBlock {
+		if ($localhost -eq $true) {
+			$systemFilesDate = (Get-Item @(
+					"${env:windir}\System32\ntoskrnl.exe",
+					"${env:windir}\System32\win32k.sys",
+					"${env:windir}\System32\win32kbase.sys",
+					"${env:windir}\System32\win32kfull.sys",
+					"${env:windir}\System32\ntdll.dll",
+					"${env:windir}\System32\USER32.dll",
+					"${env:windir}\System32\KERNEL32.dll",
+					"${env:windir}\System32\HAL.dll"
+				) -ErrorAction SilentlyContinue -WarningAction SilentlyContinue | Sort-Object -Property LastWriteTimeUtc -Descending | Select-Object -First 1).LastWriteTime
+		}
+		else {
+			$systemFilesDate = Invoke-Command -ComputerName $ComputerName -ScriptBlock {
 			(Get-Item @(
-				"${env:windir}\System32\ntoskrnl.exe",
-				"${env:windir}\System32\win32k.sys",
-				"${env:windir}\System32\win32kbase.sys",
-				"${env:windir}\System32\win32kfull.sys",
-				"${env:windir}\System32\ntdll.dll",
-				"${env:windir}\System32\USER32.dll",
-				"${env:windir}\System32\KERNEL32.dll",
-				"${env:windir}\System32\HAL.dll"
-			) -ErrorAction SilentlyContinue -WarningAction SilentlyContinue | Sort-Object -Property LastWriteTimeUtc -Descending | Select-Object -First 1).LastWriteTime
+					"${env:windir}\System32\ntoskrnl.exe",
+					"${env:windir}\System32\win32k.sys",
+					"${env:windir}\System32\win32kbase.sys",
+					"${env:windir}\System32\win32kfull.sys",
+					"${env:windir}\System32\ntdll.dll",
+					"${env:windir}\System32\USER32.dll",
+					"${env:windir}\System32\KERNEL32.dll",
+					"${env:windir}\System32\HAL.dll"
+				) -ErrorAction SilentlyContinue -WarningAction SilentlyContinue | Sort-Object -Property LastWriteTimeUtc -Descending | Select-Object -First 1).LastWriteTime
+			}
 		}
 	}
 	End {
