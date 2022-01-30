@@ -31,7 +31,7 @@ Run the script against the localhost:
   
 Run the script against a remote machine:
   
-**Get-LatestWindowsPatchingDate -ComputerName <remote hostname>**
+**Get-LatestWindowsPatchingDate -ComputerName myServer1**
 
 # Notes and Observations 
 Windows Server DOES NOT log Defender definition updates to Setup Event Log nor to Get-Hotfix. 
