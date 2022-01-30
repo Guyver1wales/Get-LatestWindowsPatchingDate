@@ -15,12 +15,12 @@ Removed output files
 ## v1.1
 Added additional checks for critical system files and Setup Event Log
 
-Re-wrote entire sctipt
+Re-wrote entire script
 ## v1.0
 Original Version
 
 # Who is This Script For? 
-1. System admins, server engineers who have no access to entrerprise patching reporting tools/applications. 
+1. System admins, server engineers who have no access to enterprise patching reporting tools/applications. 
 2. System Admins, server engineers who have joined a new company with no patching tools who need a quick solution to get an overview of windows server patching levels/dates to determine how out of date their new environment is. 
 3. Small local managed service provider engineers whose customers don't have access to patch management tools who need a quick solution to get an overview of windows server patching levels/dates to determine how out of date their customer is. 
 
@@ -35,7 +35,7 @@ While investigating this script for work as a report for my team leader, I disco
 To that end, Get-Hotfix attempts to run remotely against all servers first, and then if it fails, it will fall back to running locally on remote server via Invoke-Command. 
 
 # Execution 
-Download the scripts and store them locally in a folder of your choice. 
+Download the script and store it locally in a folder of your choice. 
 
 dot source the function to load it:
 
@@ -43,7 +43,7 @@ dot source the function to load it:
   
 Run the script against the localhost:
   
-**Get-Get-LatestWindowsPatchingDate**
+**Get-LatestWindowsPatchingDate**
   
 Run the script against a remote machine:
   
