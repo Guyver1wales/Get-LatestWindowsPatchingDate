@@ -34,6 +34,7 @@ function Get-LatestWindowsPatchingDate {
 		Change Log:
 		v1.2
 			Converted script to a function
+			Removed output files
 		v1.1
 			Added additional checks for critical system files and Setup Event Log
 			Re-wrote entire sctipt
@@ -75,11 +76,17 @@ function Get-LatestWindowsPatchingDate {
 
 		### GET MOST RECENT SETUP EVENT LOG EVENT ID 2 WITH STATE 'INSTALLED' ###
 		$eventLogResult = try {
-			Get-WinEvent -ComputerName $ComputerName -LogName Setup -ErrorAction Stop -WarningAction Stop | Where-Object { $_.Id -eq '2' -and $_.Message -match 'Installed' } | Sort-Object -Property TimeCreated -Descending | Select-Object -First 1
+			Get-WinEvent -ComputerName $ComputerName -LogName Setup -ErrorAction Stop -WarningAction Stop |
+				Where-Object { $_.Id -eq '2' -and $_.Message -match 'Installed' } |
+					Sort-Object -Property TimeCreated -Descending |
+						Select-Object -First 1
 		}
 		catch {
 			Invoke-Command -ComputerName $ComputerName -ScriptBlock {
-				Get-WinEvent -LogName Setup -ErrorAction Stop -WarningAction Stop | Where-Object { $_.Id -eq '2' -and $_.Message -match 'Installed' } | Sort-Object -Property TimeCreated -Descending | Select-Object -First 1
+				Get-WinEvent -LogName Setup -ErrorAction Stop -WarningAction Stop |
+					Where-Object { $_.Id -eq '2' -and $_.Message -match 'Installed' } |
+						Sort-Object -Property TimeCreated -Descending |
+							Select-Object -First 1
 			}
 		}
 
