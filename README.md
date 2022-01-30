@@ -1,7 +1,7 @@
 # Get-LatestWindowsPatchingDate
 Get the dates of 3 separate patching mechanisms to determine the 'updatedness' of a single or multiple windows machines where enterprise tools such as WSUS, SCCM and other 3rd party tools are unavailable.
 
-#ChangeLog
+# ChangeLog
 
 ## v1.3
 moved comment block out of function code
