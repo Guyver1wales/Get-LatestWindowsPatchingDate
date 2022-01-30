@@ -52,7 +52,13 @@ u/Semicol0n for teh recommendation to allow single computer query and allow user
 
 
 # Output Example 
-
-![patches](https://i.imgur.com/CMWyWDI.png) 
+## Localhost
+![localhost](https://i.imgur.com/FJRPgcV.png) 
+  
+## Remote Servers
+![remoteservers](https://i.imgur.com/Mqe8Fky.png)
+  
+## Remote Windows 10
+![remotewin10](https://i.imgur.com/92aCze4.png)
 
  
