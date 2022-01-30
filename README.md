@@ -48,7 +48,7 @@ u/TumsFestivalEveryDay for the Get-WinEvent code snippet which I modified to sui
 
 u/BigHandLittleSlap for pointing out the flaw in my original scripts 'logic' and the system files code which I modified to suit. 
   
-u/Semicol0n for teh recommendation to allow single computer query and allow user to determine output which allowed me to convert it to a function.
+u/Semicol0n for the recommendation to allow single computer query and allow user to determine output which allowed me to convert it to a function.
 
 
 # Output Example 
